@@ -116,10 +116,11 @@ function project (latlng) {
 
 function unproject (point) {
     var d = 180 / Math.PI;
+    var precision = 5; // around 1 meters precision
 
     return [
-        point[0] * d / R,
-        (2 * Math.atan(Math.exp(point[1] / R)) - (Math.PI / 2)) * d,
+        (point[0] * d / R).toFixed(precision),
+        ((2 * Math.atan(Math.exp(point[1] / R)) - (Math.PI / 2)) * d).toFixed(precision),
     ]
 }
 

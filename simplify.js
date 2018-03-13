@@ -114,22 +114,14 @@ function project (latlng) {
     ];
 }
 
-function truncateDecimals (number, digits) {
-    var multiplier = Math.pow(10, digits),
-        adjustedNum = number * multiplier,
-        truncatedNum = (adjustedNum < 0 ? Math.ceil : Math.floor)(adjustedNum);
-
-    return truncatedNum / multiplier;
-}
-
 function unproject (point) {
     var d = 180 / Math.PI;
     var precision = 5; // around 1 meters precision
 
     return [
-        truncateDecimals(point[0] * d / R, precision),
-        truncateDecimals((2 * Math.atan(Math.exp(point[1] / R)) - (Math.PI / 2)) * d, precision)
-    ];
+        (point[0] * d / R).toFixed(precision),
+        ((2 * Math.atan(Math.exp(point[1] / R)) - (Math.PI / 2)) * d).toFixed(precision),
+    ]
 }
 
 // both algorithms combined for awesome performance

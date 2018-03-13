@@ -119,8 +119,8 @@ function unproject (point) {
     var precision = 5; // around 1 meters precision
 
     return [
-        (point[0] * d / R).toFixed(precision),
-        ((2 * Math.atan(Math.exp(point[1] / R)) - (Math.PI / 2)) * d).toFixed(precision),
+        parseFloat((point[0] * d / R).toFixed(precision)),
+        parseFloat(((2 * Math.atan(Math.exp(point[1] / R)) - (Math.PI / 2)) * d).toFixed(precision))
     ]
 }
 
